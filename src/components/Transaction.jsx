@@ -15,20 +15,20 @@ function moneyFormatting(num) {
     p[1]
   );
 }
-export const Transaction = ({ transition }) => {
-  const { deleteTrasaction } = useContext(Global);
+export const Transaction = ({ transaction }) => {
+  const { deleteTransaction } = useContext(GlobalContext);
 
-  const sign = transition.amount < 0 ? "-" : "+";
+  const sign = transaction.amount < 0 ? "-" : "+";
 
   return (
     <li className={transaction.amount < 0 ? "minus" : "plus"}>
-      {transition.text}{" "}
+      {transaction.text}{" "}
       <span>
         {sign}
         {moneyFormatting(transaction.amount)}
       </span>
       <button
-        onClick={() => deleteTrasaction(transaction.id)}
+        onClick={() => deleteTransaction(transaction.id)}
         className="delete-btn"
       >
         X
